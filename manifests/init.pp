@@ -46,6 +46,7 @@ class access_insights_client(
     $auto_config = 'True',
     $authmethod = undef,
     $username = undef,
+    String $package_name,
     $password = undef,
     $base_url = undef,
     $proxy = undef,
@@ -56,8 +57,8 @@ class access_insights_client(
     $obfuscate_hostname = undef,
     $upload_schedule = undef,
 ){
-    package {'redhat-access-insights':
-      ensure   => latest,
+    package { $package_name:
+      ensure   => present,
     }
 
     file {'/etc/redhat-access-insights/redhat-access-insights.conf':
