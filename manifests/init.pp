@@ -46,6 +46,7 @@ class access_insights_client(
     $auto_config = 'True',
     $authmethod = undef,
     $username = undef,
+    String $package_ensure,
     String $package_name,
     $password = undef,
     $base_url = undef,
@@ -58,7 +59,7 @@ class access_insights_client(
     $upload_schedule = undef,
 ){
     package { $package_name:
-      ensure   => present,
+      ensure   => $package_ensure,
     }
 
     file {'/etc/redhat-access-insights/redhat-access-insights.conf':
